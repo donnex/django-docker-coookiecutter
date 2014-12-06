@@ -1,0 +1,5 @@
+{{cookiecutter.repo_name}}/.git
+{{cookiecutter.repo_name}}/.gitignore
+
+{{cookiecutter.repo_name}}/sass
+{{cookiecutter.repo_name}}/media

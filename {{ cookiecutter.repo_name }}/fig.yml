@@ -1,0 +1,65 @@
+# Data
+{{cookiecutter.repo_name}}data:
+  image: busybox
+  volumes:
+    - /var/lib/postgresql/data
+    - /data
+
+# PostgreSQL
+postgres:
+  image: postgres:9.3
+  volumes_from:
+    - {{cookiecutter.repo_name}}data
+  environment:
+    - POSTGRES_PASSWORD={{cookiecutter.postgres_password}}
+
+# Redis
+redis:
+  image: redis
+  volumes_from:
+    - {{cookiecutter.repo_name}}data
+
+# Nginx
+nginx:
+  image: nginx
+  ports:
+    - "80"
+  volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  links:
+    - web
+
+# Web python
+web:
+  build: ./web
+  volumes:
+    - ./web/media:/media
+    - ./web/{{cookiecutter.repo_name}}:/wwwroot:ro
+  ports:
+    - "8000:8000"
+  links:
+    - postgres
+    - redis
+  environment:
+    - DJANGO_CONFIGURATION=Dev
+    - DJANGO_SECRET_KEY={{cookiecutter.django_secret_key}}
+    - DJANGO_HIREDIS_CACHE_LOCATION=redis:6379
+    - DATABASE_URL=postgres://postgres:{{cookiecutter.postgres_password}}@postgres/{{cookiecutter.repo_name}}?sslmode=disable
+    - DJANGO_ALLOWED_HOSTS=""
+  command: gunicorn --log-file=- --workers 4 --name {{cookiecutter.repo_name}}_gunicorn -b 0.0.0.0:8000 --reload {{cookiecutter.repo_name}}.wsgi:application
+
+# pgweb
+pgweb:
+  build: ./pgweb
+  ports:
+    - "8080"
+  links:
+    - postgres
+
+# Assets
+assets:
+  build: ./assets
+  volumes:
+    - ./web/{{cookiecutter.repo_name}}/sass:/sass
+    - ./web/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}/static/css:/sass/css
+  command: watch --poll /sass

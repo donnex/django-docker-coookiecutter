@@ -1,0 +1,14 @@
+{
+    "project_name": "ProjectName",
+    "repo_name": "repo_name",
+    "author_name": "Your Name",
+    "email": "Your email",
+    "language": "en",
+    "time_zone": "Europe/Stockholm",
+    "postgres_password": "PostgreSQL password",
+    "django_secret_key": "Django secret key",
+    "jquery_version": "jQuery version",
+    "bootstrap_version": "Bootstrap version",
+    "html5shiv_version": "html5shiv version",
+    "respond_version": "respond version"
+}

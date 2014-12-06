@@ -1,0 +1,35 @@
+{% raw %}{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="{% endraw %}{{cookiecutter.language}}{% raw %}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" href="{% static "img/favicon.ico" %}">
+
+        <title>{% endraw %}{{cookiecutter.project_name}}{% raw %}</title>
+
+        <!--[if lt IE 9]>
+            <script src="https//cdn.jsdelivr.net/html5shiv/{% endraw %}{{cookiecutter.html5shiv_version}}{% raw %}/html5shiv-printshiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/respond/{% endraw %}{{cookiecutter.respond_version}}{% raw %}/respond.min.js"></script>
+        <![endif]-->
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/{% endraw %}{{cookiecutter.bootstrap_version}}{% raw %}/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static "css/{% endraw %}{{cookiecutter.repo_name}}{% raw %}.css" %}">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>{% endraw %}{{cookiecutter.project_name}}{% raw %}</h1>
+            <p class="lead">
+                Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nulla vitae elit libero, a pharetra augue.
+            </p>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/jquery/{% endraw %}{{cookiecutter.jquery_version}}{% raw %}/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/bootstrap/{% endraw %}{{cookiecutter.bootstrap_version}}{% raw %}/js/bootstrap.min.js"></script>
+    </body>
+</html>
+{% endraw %}

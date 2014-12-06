@@ -1,0 +1,38 @@
+@import "breakpoint";
+
+@import "mixins";
+
+//
+// DEBUG FIXME
+//
+body:before {
+    content: "XS";
+    color: red;
+}
+@include breakpoint(768px) {
+    body:before {
+        content: "SM 768+px";
+        color: red;
+    }
+}
+@include breakpoint(992px) {
+    body:before {
+        content: "MD 992+px";
+        color: red;
+    }
+}
+@include breakpoint(1200px) {
+    body:before {
+        content: "LG 1200+px";
+        color: red;
+    }
+}
+
+//
+// Breakpoints
+//
+$bp-xs: max-width 767px;
+$bp-sm: 768px;
+$bp-md: 992px;
+$bp-lg: 1200px;
+$bp-xl: 1600px;
