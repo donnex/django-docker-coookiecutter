@@ -41,7 +41,7 @@ class Base(Configuration):
         'django.core.context_processors.request',
         'django.core.context_processors.csrf',
 
-        'stepup.context_processors.debug',
+        '{{cookiecutter.repo_name}}.context_processors.debug',
     )
 
     DATABASES = values.DatabaseURLValue()
