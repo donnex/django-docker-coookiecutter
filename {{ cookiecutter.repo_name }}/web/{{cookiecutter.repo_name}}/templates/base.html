@@ -16,8 +16,12 @@
             <script src="https://cdn.jsdelivr.net/respond/{% endraw %}{{cookiecutter.respond_version}}{% raw %}/respond.min.js"></script>
         <![endif]-->
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/{% endraw %}{{cookiecutter.bootstrap_version}}{% raw %}/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{% static "css/{% endraw %}{{cookiecutter.repo_name}}{% raw %}.css" %}">
+        {% if DEBUG %}
+            <link rel="stylesheet" href="{% static "css/dev/lib/bootstrap.min.css" %}">
+            <link rel="stylesheet" href="{% static "css/dev/style.css" %}">
+        {% else %}
+            <link rel="stylesheet" href="{% static "css/build/style.min.css" %}">
+        {% endif %}
     </head>
 
     <body>
@@ -28,8 +32,14 @@
             </p>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/jquery/{% endraw %}{{cookiecutter.jquery_version}}{% raw %}/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/bootstrap/{% endraw %}{{cookiecutter.bootstrap_version}}{% raw %}/js/bootstrap.min.js"></script>
+        {% if DEBUG %}
+            <script src="{% static "js/dev/lib/jquery.min.js" %}"></script>
+            <script src="{% static "js/dev/lib/bootstrap.min.js" %}"></script>
+            <script src="{% static "js/dev/main.js" %}"></script>
+            <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+        {% else %}
+            <script src="{% static "js/build/main.min.js" %}"></script>
+        {% endif %}
     </body>
 </html>
 {% endraw %}
