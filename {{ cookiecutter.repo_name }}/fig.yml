@@ -48,7 +48,7 @@ web:
     - DJANGO_HIREDIS_CACHE_LOCATION=redis:6379
     - DATABASE_URL=postgres://postgres:{{cookiecutter.postgres_password}}@postgres/{{cookiecutter.repo_name}}?sslmode=disable
     - DJANGO_ALLOWED_HOSTS=""
-  command: gunicorn --log-file=- --workers 4 --name {{cookiecutter.repo_name}}_gunicorn -b 0.0.0.0:8000 --reload {{cookiecutter.repo_name}}.wsgi:application
+  command: gunicorn --log-level debug --log-file=- --workers 4 --name {{cookiecutter.repo_name}}_gunicorn -b 0.0.0.0:8000 --reload {{cookiecutter.repo_name}}.wsgi:application
 
 # pgweb
 pgweb:
