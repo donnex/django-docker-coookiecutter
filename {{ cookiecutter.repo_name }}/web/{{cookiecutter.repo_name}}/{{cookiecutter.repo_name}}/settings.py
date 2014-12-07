@@ -2,8 +2,6 @@ import os
 from configurations import Configuration, values
 from unipath import Path
 
-gettext = lambda s: s
-
 
 class Base(Configuration):
     LANGUAGE_CODE = '{{cookiecutter.language}}'
