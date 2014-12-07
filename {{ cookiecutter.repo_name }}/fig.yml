@@ -26,6 +26,8 @@ nginx:
     - "80"
   volumes:
     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    - ./web/media:/media:ro
+    - ./web/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}/static:/static:ro
   links:
     - web
 
