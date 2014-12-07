@@ -61,7 +61,10 @@ pgweb:
 # Assets
 assets:
   build: ./assets
+  ports:
+    - "35729:35729"
   volumes:
-    - ./web/{{cookiecutter.repo_name}}/sass:/sass
-    - ./web/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}/static/css:/sass/css
-  command: watch --poll /sass
+    - ./assets/gulpfile.js:/gulp/gulpfile.js
+    - ./web/{{cookiecutter.repo_name}}/sass:/gulp/sass
+    - ./web/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}/static/css:/gulp/css
+    - ./web/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}/static/js:/gulp/js
