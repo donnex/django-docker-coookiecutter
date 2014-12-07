@@ -7,7 +7,7 @@ This Cookiecutter template setups a dev enviroment for my Django projects using 
 - nginx - Nginx for web access
 - web - Python container running the Django project using Gunicorn. Installs requirements from requirements.txt
 - pgweb - pgweb container for accessing the postgres database
-- assets - asset building container running sass and compass
+- assets - asset building container running sass, compass, jshint, gulp, minification etc.
 
 ## Misc
 - Docker setup with fig
@@ -22,13 +22,14 @@ This Cookiecutter template setups a dev enviroment for my Django projects using 
 - Compass breakpoint module
 - Bootstrap
 - jQuery
+- Gulp with watch and livereload
 
 ## Commands
 Run Django manage.py commands
 
 	fig run --rm web ./manage.py migrate
 	fig run --rm web ./manage.py syncdb
-	
+
 Creating a database
 
 	fig run --rm postgres sh -c 'exec createdb -U postgres -h "$POSTGRES_PORT_5432_TCP_ADDR" DATABASE_NAME';
