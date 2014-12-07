@@ -42,6 +42,8 @@ class Base(Configuration):
     TEMPLATE_CONTEXT_PROCESSORS = Configuration.TEMPLATE_CONTEXT_PROCESSORS + (
         'django.core.context_processors.request',
         'django.core.context_processors.csrf',
+
+        'stepup.context_processors.debug',
     )
 
     DATABASES = values.DatabaseURLValue()
