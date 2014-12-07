@@ -24,7 +24,6 @@ RUN npm install \
     gulp-add-src \
     run-sequence \
     jshint-stylish \
-    gulp-watch \
     gulp-livereload
 
 RUN useradd -ms /bin/bash assets
