@@ -60,7 +60,7 @@ pgweb:
 
 # Assets
 assets:
-  build: ./assets
+  image: donnex/assets
   ports:
     - "35729:35729"
   volumes:
