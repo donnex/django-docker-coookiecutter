@@ -31,6 +31,25 @@ nginx:
   links:
     - web
 
+# pgweb
+pgweb:
+  image: donnex/pgweb
+  ports:
+    - "8080"
+  links:
+    - postgres
+
+# Assets
+assets:
+  image: donnex/assets
+  ports:
+    - "35729:35729"
+  volumes:
+    - ./assets/gulpfile.js:/gulp/gulpfile.js
+    - ./web/{{cookiecutter.repo_name}}/sass:/gulp/sass
+    - ./web/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}/static/css:/gulp/css
+    - ./web/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}/static/js:/gulp/js
+
 # Web python
 web:
   build: ./web
@@ -50,22 +69,3 @@ web:
     - DATABASE_URL=postgres://postgres:{{cookiecutter.postgres_password}}@postgres/{{cookiecutter.repo_name}}?sslmode=disable
     - EMAIL_URL=console://
   command: gunicorn --log-level debug --log-file=- --workers 4 --name {{cookiecutter.repo_name}}_gunicorn -b 0.0.0.0:8000 --reload {{cookiecutter.repo_name}}.wsgi:application
-
-# pgweb
-pgweb:
-  image: donnex/pgweb
-  ports:
-    - "8080"
-  links:
-    - postgres
-
-# Assets
-assets:
-  image: donnex/assets
-  ports:
-    - "35729:35729"
-  volumes:
-    - ./assets/gulpfile.js:/gulp/gulpfile.js
-    - ./web/{{cookiecutter.repo_name}}/sass:/gulp/sass
-    - ./web/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}/static/css:/gulp/css
-    - ./web/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}/static/js:/gulp/js
