@@ -52,7 +52,7 @@ web:
 
 # pgweb
 pgweb:
-  build: ./pgweb
+  image: donnex/pgweb
   ports:
     - "8080"
   links:
