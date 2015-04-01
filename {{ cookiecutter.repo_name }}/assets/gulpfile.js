@@ -22,6 +22,9 @@ gulp.task('compass', function() {
       css: '/gulp/css/dev',
       require: ['compass/import-once/activate', 'breakpoint']
     }))
+    .on('error', function (err) {
+      this.emit('end');
+    })
     .pipe(autoprefixer('last 2 version'))
     .pipe(gulp.dest('/gulp/css/dev'))
     .pipe(notify({message: 'Compass build task complete'}));
