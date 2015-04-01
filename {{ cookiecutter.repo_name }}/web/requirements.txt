@@ -14,7 +14,7 @@ ipdb
 django-debug-toolbar==1.2.2
 
 # Django
-Django==1.7.3
+Django==1.7.7
 django-configurations==0.8
 dj-database-url==0.3.0
 dj-email-url==0.0.2
