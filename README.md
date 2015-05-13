@@ -27,9 +27,9 @@ This Cookiecutter template setups a dev enviroment for my Django projects using 
 ## Commands
 Run Django manage.py commands
 
-	fig run --rm web ./manage.py migrate
-	fig run --rm web ./manage.py syncdb
+	django-compose run --rm web ./manage.py migrate
+	django-compose run --rm web ./manage.py syncdb
 
-Creating a database
+Creating a database (change DATABASE_NAME)
 
-	fig run --rm postgres sh -c 'exec createdb -U postgres -h "$POSTGRES_PORT_5432_TCP_ADDR" DATABASE_NAME';
+	django-compose run --rm postgres sh -c 'exec createdb -U postgres -h "$POSTGRES_PORT_5432_TCP_ADDR" DATABASE_NAME';
