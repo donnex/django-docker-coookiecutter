@@ -1,4 +1,4 @@
-This Cookiecutter template setups a dev enviroment for my Django projects using Docker containers and django-compose.
+This Cookiecutter template setups a dev enviroment for my Django projects using Docker containers and docker-compose.
 
 ## Containers
 - data container - Data container for Postgres and redis data
@@ -27,9 +27,9 @@ This Cookiecutter template setups a dev enviroment for my Django projects using 
 ## Commands
 Run Django manage.py commands
 
-	django-compose run --rm web ./manage.py migrate
-	django-compose run --rm web ./manage.py syncdb
+	docker-compose run --rm web ./manage.py migrate
+	docker-compose run --rm web ./manage.py syncdb
 
 Creating a database (change DATABASE_NAME)
 
-	django-compose run --rm postgres sh -c 'exec createdb -U postgres -h "$POSTGRES_PORT_5432_TCP_ADDR" DATABASE_NAME';
+	docker-compose run --rm postgres sh -c 'exec createdb -U postgres -h "$POSTGRES_PORT_5432_TCP_ADDR" DATABASE_NAME';
