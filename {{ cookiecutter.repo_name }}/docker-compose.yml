@@ -7,7 +7,7 @@
 
 # PostgreSQL
 postgres:
-  image: postgres:9.3
+  image: postgres:9.4
   volumes_from:
     - {{cookiecutter.repo_name}}data
   environment:
