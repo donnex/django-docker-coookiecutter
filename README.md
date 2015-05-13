@@ -24,12 +24,10 @@ This Cookiecutter template setups a dev enviroment for my Django projects using 
 - jQuery
 - Gulp with watch and livereload
 
-## Commands
-Run Django manage.py commands
+## Generate Django secret key
+A Django secret key can be generated with the following command:
 
-	docker-compose run --rm web ./manage.py migrate
-	docker-compose run --rm web ./manage.py syncdb
+    python -c 'import random; print "".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)") for i in range(50)])'
 
-Creating a database (change DATABASE_NAME)
-
-	docker-compose run --rm postgres sh -c 'exec createdb -U postgres -h "$POSTGRES_PORT_5432_TCP_ADDR" DATABASE_NAME';
+## Additinal info
+Check the generated README.md for more info and commands.
