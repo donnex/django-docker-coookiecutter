@@ -1,4 +1,4 @@
-This Cookiecutter template setups a dev enviroment for my Django projects using Docker containers and fig.
+This Cookiecutter template setups a dev enviroment for my Django projects using Docker containers and django-compose.
 
 ## Containers
 - data container - Data container for Postgres and redis data
