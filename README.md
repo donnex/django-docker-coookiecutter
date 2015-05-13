@@ -34,5 +34,8 @@ Run the nginx-proxy on port 80 to use the virtual hosts. I'm adding my virtual h
 
     docker run -d -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock --name nginx-proxy jwilder/nginx-proxy
 
+## Root
+Currently the web container is run as user: root. This is because of how boot2docker maps permissions to mounted folders from OS X. Without root write permissions will be a problem.
+
 ## Additinal info
 Check the generated README.md for more info and commands.
