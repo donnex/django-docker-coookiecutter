@@ -22,8 +22,6 @@ redis:
 # Nginx
 nginx:
   image: nginx
-  ports:
-    - "80"
   volumes:
     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     - ./web/media:/media:ro
@@ -34,10 +32,10 @@ nginx:
 # pgweb
 pgweb:
   image: donnex/pgweb
-  ports:
-    - "8080"
   links:
     - postgres
+  environment:
+    VIRTUAL_HOST: pgweb.{{cookiecutter.virtual_host}}
 
 # Assets
 assets:
@@ -56,8 +54,6 @@ web:
   volumes:
     - ./web/media:/media
     - ./web/{{cookiecutter.repo_name}}:/wwwroot:ro
-  ports:
-    - "8000:8000"
   links:
     - postgres
     - redis
@@ -69,3 +65,4 @@ web:
     - DATABASE_URL=postgres://postgres:{{cookiecutter.postgres_password}}@postgres/{{cookiecutter.repo_name}}?sslmode=disable
     - EMAIL_URL=console://
   command: gunicorn --log-level debug --log-file=- --workers 4 --name {{cookiecutter.repo_name}}_gunicorn -b 0.0.0.0:8000 --reload {{cookiecutter.repo_name}}.wsgi:application
+    - VIRTUAL_HOST={{cookiecutter.virtual_host}}

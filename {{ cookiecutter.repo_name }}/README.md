@@ -5,6 +5,11 @@
 
 **database url**: postgres://postgres:{{cookiecutter.postgres_password}}@postgres/{{cookiecutter.repo_name}}?sslmode=disable
 
+## Hosts
+**Web**: {{cookiecutter.virtual_host}}
+
+**Pgweb**: pgweb.{{cookiecutter.virtual_host}}
+
 ## Commands
 Run Django manage.py commands:
 

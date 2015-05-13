@@ -1,6 +1,7 @@
 {
     "project_name": "Project Name",
     "repo_name": "reponame",
+    "virtual_host": "reponame.dev",
     "author_name": "Author Name",
     "email": "Email",
     "language": "en",
