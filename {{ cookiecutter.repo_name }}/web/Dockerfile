@@ -2,7 +2,7 @@ FROM python:2.7
 
 WORKDIR /wwwroot
 
-COPY requirements.txt /wwwroot/
+COPY {{cookiecutter.repo_name}}/requirements.txt /wwwroot/
 
 RUN pip install -r requirements.txt
 
