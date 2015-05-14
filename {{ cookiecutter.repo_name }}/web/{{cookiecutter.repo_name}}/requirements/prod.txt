@@ -1,0 +1,4 @@
+-r base.txt
+
+setproctitle==1.1.8
+raven==5.3.1
