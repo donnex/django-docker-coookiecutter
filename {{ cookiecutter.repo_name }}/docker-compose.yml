@@ -45,7 +45,7 @@ assets:
   ports:
     - "35729:35729"
   volumes:
-    - ./assets/gulpfile.js:/gulp/gulpfile.js
+    - ./assets/gulpfile.js:/gulp/gulpfile.js:ro
     - ./web/{{cookiecutter.repo_name}}/sass:/gulp/sass
     - ./web/{{cookiecutter.repo_name}}/static/css:/gulp/css
     - ./web/{{cookiecutter.repo_name}}/static/js:/gulp/js
