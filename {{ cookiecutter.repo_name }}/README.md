@@ -17,7 +17,8 @@ Creating the database:
 
 Run Django manage.py commands:
 
-    docker-compose run --rm web ./manage.py migrate
     docker-compose run --rm web ./manage.py help
+    docker-compose run --rm web ./manage.py migrate
     docker-compose run --rm web ./manage.py createsuperuser
     docker-compose run --rm web ./manage.py collectstatic
+    docker-compose run --rm web ./manage.py startapp APP_NAME
