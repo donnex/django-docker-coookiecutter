@@ -27,7 +27,7 @@ class Base(Configuration):
     STATIC_ROOT = PROJECT_DIR.child('static')
     STATIC_URL = '/static/'
 
-    MEDIA_ROOT = '/media/'
+    MEDIA_ROOT = PROJECT_DIR.child('media')
     MEDIA_URL = '/media/'
 
     TEMPLATE_DIRS = (
