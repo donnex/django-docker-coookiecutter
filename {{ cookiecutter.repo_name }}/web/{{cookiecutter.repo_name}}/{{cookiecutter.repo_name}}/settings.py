@@ -24,10 +24,7 @@ class Base(Configuration):
 
     PROJECT_DIR = Path(__file__).ancestor(2)
 
-    STATIC_ROOT = '/static/'
-    STATICFILES_DIRS = (
-        PROJECT_DIR.child('{{cookiecutter.repo_name}}', 'static'),
-    )
+    STATIC_ROOT = PROJECT_DIR.child('static')
     STATIC_URL = '/static/'
 
     MEDIA_ROOT = '/media/'
