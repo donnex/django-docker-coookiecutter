@@ -30,17 +30,6 @@ class Base(Configuration):
     MEDIA_ROOT = PROJECT_DIR.child('media')
     MEDIA_URL = '/media/'
 
-    TEMPLATE_DIRS = (
-        PROJECT_DIR.child('templates'),
-    )
-
-    TEMPLATE_CONTEXT_PROCESSORS = Configuration.TEMPLATE_CONTEXT_PROCESSORS + (
-        'django.core.context_processors.request',
-        'django.core.context_processors.csrf',
-
-        '{{cookiecutter.repo_name}}.context_processors.debug',
-    )
-
     DATABASES = values.DatabaseURLValue()
 
     EMAIL = values.EmailURLValue()
@@ -89,10 +78,28 @@ class Base(Configuration):
         },
     }
 
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [PROJECT_DIR.child('templates')],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                    'django.template.context_processors.csrf',
+                    '{{cookiecutter.repo_name}}.context_processors.debug',
+                ],
+            },
+        },
+    ]
+
 
 class Dev(Base):
     DEBUG = True
-    TEMPLATE_DEBUG = DEBUG
+    Base.TEMPLATES[0]['OPTIONS']['debug'] = True
 
     INTERNAL_IPS = (
         '127.0.0.1',
