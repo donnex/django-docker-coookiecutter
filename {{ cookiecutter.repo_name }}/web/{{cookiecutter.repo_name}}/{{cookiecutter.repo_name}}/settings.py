@@ -4,7 +4,7 @@ from unipath import Path
 
 
 class Base(Configuration):
-    LANGUAGE_CODE = '{{cookiecutter.language}}'
+    LANGUAGE_CODE = '{{cookiecutter.django_language_code}}'
 
     TIME_ZONE = '{{cookiecutter.time_zone}}'
 
