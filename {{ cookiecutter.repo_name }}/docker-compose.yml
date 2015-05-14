@@ -28,6 +28,8 @@ nginx:
     - ./web/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}/static:/static:ro
   links:
     - web
+  environment:
+    VIRTUAL_HOST: {{cookiecutter.virtual_host}}
 
 # pgweb
 pgweb:
@@ -64,6 +66,5 @@ web:
     - DJANGO_ALLOWED_HOSTS=""
     - DATABASE_URL=postgres://postgres:{{cookiecutter.postgres_password}}@postgres/{{cookiecutter.repo_name}}?sslmode=disable
     - EMAIL_URL=console://
-    - VIRTUAL_HOST={{cookiecutter.virtual_host}}
   user: root
   command: gunicorn --log-level info --log-file=- --workers 4 --name {{cookiecutter.repo_name}}_gunicorn -b 0.0.0.0:8000 --reload {{cookiecutter.repo_name}}.wsgi:application
