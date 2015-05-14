@@ -54,7 +54,7 @@ assets:
 web:
   build: ./web
   volumes:
-    - ./web/{{cookiecutter.repo_name}}:/wwwroot:ro
+    - ./web/{{cookiecutter.repo_name}}:/wwwroot
   links:
     - postgres
     - redis
