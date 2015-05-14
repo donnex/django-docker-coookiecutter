@@ -107,12 +107,16 @@ class Dev(Base):
     )
 
     MIDDLEWARE_CLASSES = Base.MIDDLEWARE_CLASSES + [
-        # 'debug_toolbar.middleware.DebugToolbarMiddleware',
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
     ]
 
     INSTALLED_APPS = Base.INSTALLED_APPS + [
-        # 'debug_toolbar',
+        'debug_toolbar',
     ]
+
+    DEBUG_TOOLBAR_CONFIG = {
+        'SHOW_TOOLBAR_CALLBACK': lambda x: True
+    }
 
 
 class Prod(Base):
