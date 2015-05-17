@@ -12,7 +12,7 @@ This setup is currently only intended to be used in dev, not production.
 - assets - asset building container running sass, compass, jshint, gulp, minification etc.
 
 ## Misc
-- Docker setup with fig
+- Docker setup with docker-compose
 - Django with PostgreSQL database
 - PostgreSQL
 - Redis
