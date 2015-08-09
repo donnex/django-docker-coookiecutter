@@ -28,17 +28,17 @@ This setup is currently only intended to be used in dev, not production.
 
 ## How to use
 First install cookiecutter, probably:
-    
+
     pip install cookiecutter
-    
+
 Run cookiecutter to generate a new project folder, complete with project folders and docker-compose setup:
 
     cookiecutter https://github.com/donnex/django-docker-coookiecutter
-    
+
 Answer the questions from cookiecutter. The project output folder is repo_name in the cookiecutter questions.
 
 cd into the new repo_name folder and run:
-    
+
     docker-compose up
 
 As long as you've added your virtual hosts to the host file and run the nginx-proxy container you should be able to browse to your virtual host in your browser.
