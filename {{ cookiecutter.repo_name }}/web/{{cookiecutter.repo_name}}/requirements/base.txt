@@ -1,5 +1,5 @@
 # Libraries
-psycopg2==2.6
+psycopg2==2.6.1
 Unipath==1.1
 hiredis==0.2.0
 
@@ -7,8 +7,10 @@ hiredis==0.2.0
 gunicorn==19.3.0
 
 # Django
-Django==1.8.1
-django-configurations==0.8
+Django==1.8.3
 dj-database-url==0.3.0
 dj-email-url==0.0.4
-django-redis-cache==0.13.1
+django-redis-cache==1.5.5
+
+# django-configurations from Git master (needed for Django 1.8 support)
+git+https://github.com/jezdez/django-configurations
