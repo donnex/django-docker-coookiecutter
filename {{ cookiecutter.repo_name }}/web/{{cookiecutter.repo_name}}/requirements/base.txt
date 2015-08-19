@@ -10,7 +10,7 @@ gunicorn==19.3.0
 Django==1.8.4
 dj-database-url==0.3.0
 dj-email-url==0.0.4
-django-redis-cache==1.5.5
+django-redis-cache==1.6.0
 
 # django-configurations from Git master (needed for Django 1.8 support)
 git+https://github.com/jezdez/django-configurations
