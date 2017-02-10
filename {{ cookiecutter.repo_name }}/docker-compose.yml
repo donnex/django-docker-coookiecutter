@@ -1,69 +1,64 @@
-# Data
-{{cookiecutter.repo_name}}data:
-  image: busybox
-  volumes:
-    - /var/lib/postgresql/data
-    - /data
+version: '3.1'
 
-# PostgreSQL
-postgres:
-  image: postgres:9.4
-  volumes_from:
-    - {{cookiecutter.repo_name}}data
-  environment:
-    - POSTGRES_PASSWORD={{cookiecutter.postgres_password}}
+# Services
+services:
+  # PostgreSQL
+  postgres:
+    image: postgres:9.6
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD={{cookiecutter.postgres_password}}
 
-# Redis
-redis:
-  image: redis
-  volumes_from:
-    - {{cookiecutter.repo_name}}data
+  # Redis
+  redis:
+    image: redis
+    volumes:
+      - redis:/data
 
-# Nginx
-nginx:
-  image: nginx
-  volumes:
-    - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-  links:
-    - web
-  environment:
-    VIRTUAL_HOST: {{cookiecutter.virtual_host}}
+  # Nginx
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./django/{{cookiecutter.repo_name}}/media:/media:ro
       - ./django/{{cookiecutter.repo_name}}/static:/static:ro
+    environment:
+      VIRTUAL_HOST: {{cookiecutter.virtual_host}}
 
-# pgweb
-pgweb:
-  image: donnex/pgweb
-  links:
-    - postgres
-  environment:
-    VIRTUAL_HOST: pgweb.{{cookiecutter.virtual_host}}
+  # pgweb
+  pgweb:
+    image: donnex/pgweb
+    environment:
+      VIRTUAL_HOST: pgweb.{{cookiecutter.virtual_host}}
 
-# Assets
-assets:
-  image: donnex/assets
-  ports:
-    - "35729:35729"
-  volumes:
-    - ./assets/gulpfile.js:/gulp/gulpfile.js:ro
+  # Assets
+  assets:
+    image: donnex/assets
+    ports:
+      - "35729:35729"
+    volumes:
+      - ./assets/gulpfile.js:/gulp/gulpfile.js:ro
       - ./django/{{cookiecutter.repo_name}}/sass:/gulp/sass
       - ./django/{{cookiecutter.repo_name}}/static/css:/gulp/css
       - ./django/{{cookiecutter.repo_name}}/static/js:/gulp/js
 
-  links:
-    - postgres
-    - redis
-  environment:
-    - DJANGO_CONFIGURATION=Dev
-    - DJANGO_SECRET_KEY={{cookiecutter.django_secret_key}}
-    - DJANGO_HIREDIS_CACHE_LOCATION=redis:6379
-    - DJANGO_ALLOWED_HOSTS=""
-    - DATABASE_URL=postgres://postgres:{{cookiecutter.postgres_password}}@postgres/{{cookiecutter.repo_name}}?sslmode=disable
-    - EMAIL_URL=console://
-  user: root
-  command: gunicorn --log-level info --log-file=- --workers 4 --name {{cookiecutter.repo_name}}_gunicorn -b 0.0.0.0:8000 --reload {{cookiecutter.repo_name}}.wsgi:application
   # Django python
   django:
     build: ./django
     volumes:
       - ./django/{{cookiecutter.repo_name}}:/wwwroot
+    environment:
+      - DJANGO_CONFIGURATION=Dev
+      - DJANGO_SECRET_KEY={{cookiecutter.django_secret_key}}
+      - DJANGO_HIREDIS_CACHE_LOCATION=redis:6379
+      - DJANGO_ALLOWED_HOSTS=""
+      - DATABASE_URL=postgres://postgres:{{cookiecutter.postgres_password}}@postgres/{{cookiecutter.repo_name}}?sslmode=disable
+      - EMAIL_URL=console://
+    command: gunicorn --log-level info --log-file=- --workers 4 --name {{cookiecutter.repo_name}}_gunicorn -b 0.0.0.0:8000 --reload {{cookiecutter.repo_name}}.wsgi:application
+
+
+# Volumes
+volumes:
+  postgres:
+  redis:
