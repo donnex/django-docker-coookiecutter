@@ -7,7 +7,7 @@ This setup is currently only intended to be used in dev, not production.
 - posgres - PostgreSQL
 - redis - Redis
 - nginx - Nginx for web access
-- web - Python container running the Django project using Gunicorn. Installs requirements from requirements.txt
+- django - Python container running the Django project using Gunicorn. Installs requirements from requirements.txt
 - pgweb - pgweb container for accessing the postgres database
 - assets - asset building container running sass, compass, jshint, gulp, minification etc.
 
