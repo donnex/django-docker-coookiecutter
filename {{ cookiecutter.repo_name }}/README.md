@@ -1,6 +1,7 @@
 # {{cookiecutter.project_name}}
 
 ## PostgreSQL
+
 **postgres password**: {{cookiecutter.postgres_password}}
 
 **database url**: postgres://postgres:{{cookiecutter.postgres_password}}@postgres/{{cookiecutter.repo_name}}?sslmode=disable
