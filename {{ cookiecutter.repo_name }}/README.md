@@ -12,9 +12,10 @@
 **Pgweb**: pgweb.{{cookiecutter.virtual_host}}
 
 ## Commands
-Creating the database:
 
-    docker-compose run --rm postgres sh -c 'exec createdb -U postgres -h "$POSTGRES_PORT_5432_TCP_ADDR" {{cookiecutter.repo_name}}';
+Creating the database (when the postgres container is running):
+
+    docker-compose exec postgres createdb -U postgres {{cookiecutter.repo_name}}
 
 Run Django manage.py commands:
 
