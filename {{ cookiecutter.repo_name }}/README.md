@@ -9,6 +9,7 @@
 ## Hosts
 
 **Django**: {{cookiecutter.virtual_host}}
+
 **Pgweb**: pgweb.{{cookiecutter.virtual_host}}
 
 ## Commands
