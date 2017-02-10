@@ -55,7 +55,7 @@ services:
       - DJANGO_CONFIGURATION=Dev
       - DJANGO_SECRET_KEY={{cookiecutter.django_secret_key}}
       - DJANGO_HIREDIS_CACHE_LOCATION=redis:6379
-      - DJANGO_ALLOWED_HOSTS=""
+      - DJANGO_ALLOWED_HOSTS={{cookiecutter.virtual_host}}
       - DATABASE_URL=postgres://postgres:{{cookiecutter.postgres_password}}@postgres/{{cookiecutter.repo_name}}?sslmode=disable
       - EMAIL_URL=console://
     command: gunicorn --log-level info --log-file=- --workers 4 --name {{cookiecutter.repo_name}}_gunicorn -b 0.0.0.0:8000 --reload {{cookiecutter.repo_name}}.wsgi:application
