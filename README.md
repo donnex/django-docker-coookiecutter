@@ -20,7 +20,7 @@ This setup is currently only intended to be used in dev, not production.
 - Django with PostgreSQL database
 - PostgreSQL
 - Redis
-- Datacontainer for persistent data
+- Data volume for persistent data (posgres + redis)
 - Nginx
 - Gunicorn
 - Sass
@@ -56,13 +56,9 @@ A Django secret key can be generated with the following command:
 
 ## Nginx proxy
 
-Run the nginx-proxy on port 80 to use the virtual hosts. I'm adding my virtual hosts to /etc/hosts. If boot2docker is used one need to get the IP of the boot2docker VM. Run boot2docker ip and add use that IP in /etc/hosts.
+Run the nginx-proxy on port 80 to use the virtual hosts. I'm adding my virtual hosts to /etc/hosts.
 
     docker run -d -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock --name nginx-proxy jwilder/nginx-proxy
-
-## Root
-
-Currently the web container is run as user: root. This is because of how boot2docker maps permissions to mounted folders from OS X. Without root write permissions will be a problem.
 
 ## Additinal info
 
