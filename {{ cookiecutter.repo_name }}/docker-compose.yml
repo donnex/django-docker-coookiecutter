@@ -45,7 +45,10 @@ services:
 
   # Django python
   django:
-    build: ./django
+    build:
+      context: ./django
+      args:
+        requirements_file: requirements/dev.txt
     volumes:
       - ./django/{{cookiecutter.repo_name}}:/wwwroot
     environment:
