@@ -20,6 +20,7 @@ class Base(Configuration):
     USE_TZ = True
 
     ALLOWED_HOSTS = [
+        os.environ['DJANGO_ALLOWED_HOSTS'],
     ]
 
     PROJECT_DIR = Path(__file__).ancestor(2)
@@ -120,10 +121,6 @@ class Dev(Base):
 
 
 class Prod(Base):
-    ALLOWED_HOSTS = Base.ALLOWED_HOSTS + [
-        os.environ['DJANGO_ALLOWED_HOSTS'],
-    ]
-
     RAVEN_CONFIG = values.DictValue()
 
     INSTALLED_APPS = Base.INSTALLED_APPS + [
