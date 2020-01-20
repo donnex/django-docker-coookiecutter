@@ -1,5 +1,7 @@
 # django-docker-coookiecutter
 
+**This project is outdated and not maintained any more.**
+
 [Cookiecutter](https://github.com/audreyr/cookiecutter) project template that setups a dev enviroment for Django projects using Docker containers with docker-compose.
 
 This setup is currently only intended to be used in dev, not production.
