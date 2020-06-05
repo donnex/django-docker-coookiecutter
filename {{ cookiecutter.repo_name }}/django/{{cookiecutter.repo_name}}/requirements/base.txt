@@ -7,7 +7,7 @@ hiredis==0.2.0
 gunicorn==19.6.0
 
 # Django
-Django==1.11.23
+Django==1.11.29
 dj-database-url==0.4.2
 dj-email-url==0.0.10
 django-redis-cache==1.7.1
